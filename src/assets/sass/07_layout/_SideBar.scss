@@ -1,0 +1,82 @@
+.sidebar {
+  position: relative;
+  background-color: $color-background;
+  padding-right: 8px;
+  height: 100%;
+  overflow: hidden;
+
+  &__container {
+    height: 100%;
+    background-color: $color-background-container;
+    border-radius: 0px 8px 8px 0px;
+    position: relative;
+
+    &__close-icon {
+      height: 30px !important;
+      width: 30px !important;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    &__menu {
+      position: relative;
+      height: calc(100% - 56px);
+      overflow: hidden;
+      padding: 20px 15px 18px;
+    }
+
+    &__expander {
+      position: absolute;
+      bottom: 15%;
+      right: -16px;
+      cursor: pointer;
+    }
+
+    &--expanded {
+      width: 215px;
+      min-width: 215px;
+    }
+
+    &--unexpanded {
+      width: 80px;
+    }
+  }
+  &--hidden {
+    all: unset;
+    padding-right: 8px;
+    background-color: $color-background;
+    transform: translateX(-100%);
+    transition: 1s ease-out;
+  }
+
+  &--show {
+    all: unset;
+    padding-right: 8px;
+    background-color: $color-background;
+    transform: translateX(0);
+    transition: 1s ease-out;
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 576px) {
+  .sidebar {
+    width: 100% !important;
+    height: 100vh !important;
+    position: absolute;
+    z-index: 10000;
+    padding-right: 0;
+
+    &__container {
+      &__expander {
+        display: none;
+      }
+
+      &--expanded {
+        width: 210px;
+      }
+    }
+  }
+}
