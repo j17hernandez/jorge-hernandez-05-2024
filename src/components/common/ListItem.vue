@@ -36,6 +36,7 @@
 <script lang="ts" setup>
 import type { ListItemType } from '@/interfaces/list-item.interface'
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   item: {
@@ -52,11 +53,13 @@ const props = defineProps({
   }
 })
 
+const router = useRouter()
+
 const isSelectedItemPath = computed(() => {
-  return props.item.path && location.pathname === props.item.path
+  return router.currentRoute.value.path === props.item.path
 })
 
 const goToPath = (path: string) => {
-  location.pathname = path
+  router.push(path)
 }
 </script>

@@ -5,6 +5,7 @@
       'card--no-shadow': noShadow
     }"
     :style="`--width: ${width}px`"
+    @click="handleClick"
   >
     <div class="card__header" :class="{ 'card__header--simpleCard': simpleCard }">
       <slot name="title"></slot>
@@ -19,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 defineProps({
   noShadow: {
@@ -35,4 +36,10 @@ defineProps({
     default: null
   }
 })
+
+const emit = defineEmits(['click'])
+
+const handleClick = () => {
+  emit('click')
+}
 </script>

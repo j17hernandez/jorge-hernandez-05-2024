@@ -1,0 +1,51 @@
+.team-pokemon-list {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 1em;
+    height: auto;
+    overflow: auto;
+    overflow-y: scroll;
+    max-height: 90vh;
+    padding: 10px;
+  }
+  &--is-mobile {
+    .team-pokemon-list {
+      display: flex;
+      flex-direction: column;
+      &__container {
+        grid-template-columns: repeat(1, minmax(100%, 1fr));
+      }
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    &__title {
+      font-size: 22px;
+      color: $color-title;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    &__image {
+      height: 350px;
+      width: 344px;
+      background: url('@/assets/img/team_pokemon.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+}
