@@ -1,0 +1,78 @@
+.card-pokemon {
+  width: var(--width);
+  cursor: pointer;
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0px 10px;
+    &__title {
+      width: 50%;
+      text-transform: capitalize;
+      font-size: large;
+      font-weight: 700;
+      color: $color-title;
+    }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    &__image {
+      width: var(--width-image);
+      height: var(--width-image);
+      aspect-ratio: 1 / 19;
+      &:active {
+        animation: bounce 1s ease-in-out;
+      }
+    }
+    &__types {
+      display: flex;
+      gap: 5px;
+      &__title {
+        font-weight: 600;
+      }
+    }
+    &__attributes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 5px;
+    }
+    &__stats {
+      width: 100%;
+      display: flex;
+      gap: 5px;
+      &__name {
+        font-weight: 600;
+      }
+    }
+  }
+  &--selected {
+    background-color: $color-secondary-lighter;
+  }
+  &__footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 10px 10px 0px;
+    &__image {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &--limit {
+    .card-pokemon {
+      &__body {
+        &__image {
+          &:active {
+            animation: vibrate 0.4s infinite;
+          }
+        }
+      }
+    }
+  }
+}

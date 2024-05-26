@@ -58,7 +58,7 @@ const items = ref([
     icon: homeIcon
   },
   {
-    name: 'Grupo',
+    name: 'Team',
     path: '/team',
     icon: groupIcon
   }
