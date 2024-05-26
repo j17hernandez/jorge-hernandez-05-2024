@@ -14,6 +14,7 @@ export interface DetailPokemon {
   order: number
   past_abilities: any[]
   past_types: any[]
+  selected: boolean
   species: Species
   sprites: Sprites
   stats: Stat[]

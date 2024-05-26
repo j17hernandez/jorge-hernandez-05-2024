@@ -1,0 +1,116 @@
+.button-common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: 36px;
+
+  &--block {
+    width: auto;
+  }
+  &--noblock {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  // &_size {
+  //   &--sm {
+  //     height: $sm-button;
+  //   }
+  //   &--md {
+  //     height: $md-button;
+  //   }
+  //   &--lg {
+  //     height: $lg-button;
+  //   }
+  // }
+  &--primary {
+    border: 1px solid $color-primary;
+    background: $color-primary;
+    color: $color-white;
+  }
+
+  &--icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.6875px solid $color-primary-light;
+    border-radius: 3.4375px;
+    padding: 2.75px;
+
+    & img {
+      width: 15px;
+      height: 16px;
+    }
+  }
+
+  &--secondary {
+    border: 1px solid $color-secondary;
+    background: $color-secondary;
+    color: $color-white;
+  }
+
+  &--cancel {
+    border: 1px solid $color-primary-light;
+    color: $color-on-default;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 18px;
+  }
+  &--outlined {
+    background: $color-white;
+    &.button-common {
+      &--primary {
+        color: $color-primary;
+      }
+      &--secondary {
+        color: $color-secondary;
+      }
+
+      &--disabled {
+        color: $color-on-disabled;
+        border: none !important;
+      }
+    }
+  }
+  &--contained.button-common {
+    &--primary:hover {
+      background: $color-primary-dark !important;
+      border: 1px solid $color-primary-dark !important;
+    }
+    &--secondary:hover {
+      background: $color-secondary-dark !important;
+      border: 1px solid $color-secondary-dark !important;
+    }
+  }
+  &--link {
+    text-decoration: underline;
+    border: none !important;
+    background: none !important;
+    color: $color-link;
+  }
+  &--disabled {
+    flex-direction: row-reverse;
+    border: 1px solid $color-background-disabled !important;
+    background: $color-background-disabled !important;
+    pointer-events: none;
+    color: $color-on-disabled;
+    &.button-common {
+      &--link {
+        background: none !important;
+        border: none !important;
+      }
+    }
+  }
+}

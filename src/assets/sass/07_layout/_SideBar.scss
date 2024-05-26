@@ -36,7 +36,6 @@
 
     &--expanded {
       width: 215px;
-      min-width: 215px;
     }
 
     &--unexpanded {
@@ -60,22 +59,12 @@
   }
 }
 
-// Extra small devices (portrait phones, less than 576px)
 @media (max-width: 576px) {
   .sidebar {
-    width: 100% !important;
     height: 100vh !important;
-    position: absolute;
-    z-index: 10000;
-    padding-right: 0;
-
     &__container {
-      &__expander {
-        display: none;
-      }
-
       &--expanded {
-        width: 210px;
+        width: 100px;
       }
     }
   }

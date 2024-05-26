@@ -6,7 +6,11 @@ import type { Pokemon, Result } from '@/interfaces/pokemon.interface'
 export const usePokemonStore = defineStore('pokemon', {
   state: () => ({
     pokemons: [] as Result[],
-    detailAllPokemons: [] as DetailPokemon[]
+    detailAllPokemons: [] as DetailPokemon[],
+    paginatedPokemons: [] as DetailPokemon[],
+    pageSize: 25,
+    currentPage: 1,
+    totalPages: 0
   }),
   actions: {
     async getAllPokemons() {
@@ -25,10 +29,27 @@ export const usePokemonStore = defineStore('pokemon', {
       }
       const promises = this.pokemons.map(async (pokemon) => {
         const data: DetailPokemon = await this.getPokemonByName(pokemon.name)
-        this.detailAllPokemons.push(data)
+        this.detailAllPokemons.push({ ...data, selected: false })
       })
 
       return Promise.all(promises)
+    },
+    getPaginatedPokemons() {
+      this.totalPages = Math.ceil(this.detailAllPokemons.length / this.pageSize)
+      const start = (this.currentPage - 1) * this.pageSize
+      const end = start + this.pageSize
+      const currentPageData = this.detailAllPokemons.slice(start, end)
+      this.paginatedPokemons = currentPageData
+    },
+    goToPreviousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--
+      }
+    },
+    goToNextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++
+      }
     }
   }
 })
