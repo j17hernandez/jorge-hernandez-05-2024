@@ -1,0 +1,48 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+  transition:
+    opacity 0.4s ease-in-out,
+    visibility 0.4s ease-in-out;
+  z-index: 10000;
+  -webkit-animation: 1s rotate linear infinite;
+  animation: 1s rotate linear infinite;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  &__content {
+    display: flex;
+    margin: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+    transition:
+      opacity 0.4s ease-in-out,
+      visibility 0.4s ease-in-out,
+      transform 0.4s ease-in-out;
+    border-radius: 10px;
+  }
+}
