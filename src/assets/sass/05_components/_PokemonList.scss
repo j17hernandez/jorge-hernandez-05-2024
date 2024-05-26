@@ -12,11 +12,17 @@
   &__card {
     cursor: pointer;
     width: 100%;
-    &__title {
-      margin: auto;
-      text-transform: capitalize;
-      font-size: 1.2em;
-      font-weight: 400;
+    &__header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0px 10px;
+      &__title {
+        margin: auto;
+        text-transform: capitalize;
+        font-size: 1.2em;
+        font-weight: 400;
+      }
     }
     &__body {
       display: flex;
@@ -34,6 +40,20 @@
     }
     &--selected {
       background-color: $color-secondary-lighter;
+    }
+
+    &--limit {
+      .pokemon-list {
+        &__card {
+          &__body {
+            &__image {
+              &:active {
+                animation: vibrate 0.4s infinite;
+              }
+            }
+          }
+        }
+      }
     }
   }
   &--is-mobile {
