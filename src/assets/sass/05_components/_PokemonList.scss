@@ -1,0 +1,56 @@
+.pokemon-list {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    height: auto;
+    overflow: auto;
+    overflow-y: scroll;
+    max-height: 90vh;
+    padding: 10px;
+  }
+  &__card {
+    cursor: pointer;
+    width: 100%;
+    &__title {
+      margin: auto;
+      text-transform: capitalize;
+      font-size: 1.2em;
+      font-weight: 400;
+    }
+    &__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &__image {
+        width: 150px;
+        height: 150px;
+        aspect-ratio: 1 / 19;
+        &:active {
+          animation: bounce 1s ease-in-out;
+        }
+      }
+    }
+    &--selected {
+      background-color: $color-secondary-lighter;
+    }
+  }
+  &--is-mobile {
+    .pokemon-list {
+      display: flex;
+      flex-direction: column;
+      &__container {
+        grid-template-columns: repeat(1, minmax(100%, 1fr));
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+}
