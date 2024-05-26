@@ -52,7 +52,6 @@ import { useIsMobile } from '@/mixins/isMobileMixin'
 const layoutStore = useLayoutStore()
 const emit = defineEmits(['isExpanded'])
 const contentExpanded = ref(true)
-const menuItems = ref([])
 const { isMobile } = useIsMobile()
 const openOrCloseSidebar = () => {
   contentExpanded.value = !contentExpanded.value
