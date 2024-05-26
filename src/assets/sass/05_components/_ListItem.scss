@@ -1,0 +1,80 @@
+.item__container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  background-color: $color-white;
+  padding: 10px;
+  color: $color-text;
+  font-weight: 400;
+  font-size: $font-list-item-size;
+  gap: 10px;
+
+  &__data {
+    display: flex;
+    position: relative;
+
+    &__icon-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+
+      &__icon {
+        width: 30px;
+      }
+      &__icon-selected {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    &__name-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-width: calc(100% - 30px);
+      width: 100%;
+
+      &__name {
+        padding: 0 3px 0 12px;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &--navigation {
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    width: 30px;
+    display: flex;
+    align-items: center;
+  }
+
+  &--selected-path {
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: 600;
+  }
+
+  &--selected-path:hover {
+    background-color: $color-primary !important;
+  }
+
+  &--rounded {
+    border-radius: 5px;
+  }
+}
+
+.item__container:hover {
+  background-color: $color-background-hover;
+}
