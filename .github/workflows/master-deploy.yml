@@ -2,7 +2,8 @@ name: Deploy Vue.js Frontend to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -34,12 +35,15 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-
-      - name: Upload a Build Artifact
+          # Upload Frontend Artifact
+          mv dist ../frontend-dist
+          echo "frontend-dist" >> dist-ignore-list.txt
+      # Upload Frontend Artifact
+      - name: Upload Frontend Artifact
         uses: actions/upload-artifact@v4.3.3
         with:
-          name: github-pages
-          path: dist
+          name: frontend-dist
+          path: frontend-dist
 
   deploy:
     environment:
@@ -50,10 +54,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.5
 
-      - name: Download Build Artifacts
+      - name: Download Frontend Artifact
         uses: actions/download-artifact@v4.1.7
         with:
-          name: github-pages
+          name: frontend-dist
 
-      - name: Deploy GitHub Pages site
+      - name: Deploy Frontend to GitHub Pages
         uses: actions/deploy-pages@v4.0.5
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          timeout: 600000
+          error_count: 10
+          reporting_interval: 5000
+          artifact_name: frontend-dist
