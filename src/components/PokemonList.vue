@@ -6,6 +6,7 @@
       <Input
         type="search"
         v-model="pokemonStore.search"
+        :block="isMobile"
         icon
         @update:modelValue="() => pokemonStore.getPokemonSearch()"
       />
