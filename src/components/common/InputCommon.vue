@@ -5,6 +5,7 @@
         class="input"
         :class="{
           'input--icon': icon,
+          'input--block': block,
         }"
         ref="input"
         v-model="value"
