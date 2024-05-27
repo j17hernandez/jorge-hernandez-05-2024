@@ -3,7 +3,7 @@ name: Deploy Vue.js Frontend to Pages
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 permissions:
