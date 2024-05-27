@@ -54,12 +54,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.5
 
-      - name: Download Frontend Artifact
+      - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.7
         with:
           name: frontend-dist
 
-      - name: Deploy Frontend to GitHub Pages
+      - name: Deploy GitHub Pages site
         uses: actions/deploy-pages@v4.0.5
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
