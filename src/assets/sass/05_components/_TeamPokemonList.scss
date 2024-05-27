@@ -20,28 +20,6 @@
     }
   }
 
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
-    &__title {
-      font-size: 22px;
-      color: $color-title;
-      font-weight: 600;
-      text-transform: capitalize;
-    }
-    &__image {
-      height: 350px;
-      width: 344px;
-      background: url('@/assets/img/team_pokemon.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-    }
-  }
-
   &__pagination {
     display: flex;
     justify-content: flex-end;
