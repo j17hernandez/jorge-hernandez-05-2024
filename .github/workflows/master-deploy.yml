@@ -2,7 +2,7 @@ name: Deploy Vue.js Frontend to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -33,6 +33,7 @@ jobs:
           else
             echo "Unable to determine package manager"
             exit 1
+          fi
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
