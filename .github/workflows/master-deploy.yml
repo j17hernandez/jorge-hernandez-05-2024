@@ -35,8 +35,8 @@ jobs:
             exit 1
           fi
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: build-artifacts
           path: dist
@@ -48,14 +48,14 @@ jobs:
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.5
 
-      - name: Download build artifacts
+      - name: Download Build Artifacts
         uses: actions/download-artifact@v4.1.7
         with:
           name: build-artifacts
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Deploy GitHub Pages site
+        uses: actions/deploy-pages@v4.0.5
         with:
           source_dir: dist
