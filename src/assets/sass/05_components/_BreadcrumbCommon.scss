@@ -1,0 +1,33 @@
+.breadcrumbs {
+  padding: 0 !important;
+  margin: 0 !important;
+
+  &__item {
+    display: inline-block;
+
+    &:last-child {
+      .breadcrumbs__link {
+        color: $color-primary-dark;
+        font-weight: 700 !important;
+      }
+    }
+
+    &:not(:last-of-type) {
+      &::after {
+        content: '/';
+        margin: 0 5px;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-primary;
+    font-weight: 400 !important;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

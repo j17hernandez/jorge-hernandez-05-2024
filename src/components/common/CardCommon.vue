@@ -4,7 +4,6 @@
     :class="{
       'card--no-shadow': noShadow
     }"
-    :style="`--width: ${width}px`"
     @click="handleClick"
   >
     <div class="card__header" :class="{ 'card__header--simpleCard': simpleCard }">

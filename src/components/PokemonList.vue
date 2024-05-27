@@ -1,11 +1,14 @@
 <template>
   <div class="pokemon-list" :class="{ 'pokemon-list--is-mobile': isMobile }">
     <Loading :isLoading="isLoading" />
-    <section class="pokemon-list__pagination">
-      <span>{{ pokemonStore.currentPage }} of {{ pokemonStore.totalPages }}</span>
-      <Button outlined :disabled="isDisabledPrev" @click="prev"> Prev </Button>
-      <Button outlined :disabled="isDisabledNext" @click="next"> Next </Button>
-    </section>
+    <div class="pokemon-list__header">
+      <Breadcrumb :items="pokemonStore.breadcrumb" />
+      <section class="pokemon-list__header__pagination">
+        <span>{{ pokemonStore.currentPage }} of {{ pokemonStore.totalPages }}</span>
+        <Button outlined :disabled="isDisabledPrev" @click="prev"> Prev </Button>
+        <Button outlined :disabled="isDisabledNext" @click="next"> Next </Button>
+      </section>
+    </div>
     <section v-if="!isLoading" class="pokemon-list__container">
       <CardPokemon :pokemons="pokemonStore.paginatedPokemons" showCheckbox />
     </section>
@@ -18,6 +21,7 @@ import { usePokemonStore } from '@/stores/pokemon'
 import Loading from './common/LoadingCommon.vue'
 import CardPokemon from './CardPokemon.vue'
 import Button from './common/ButtonCommon.vue'
+import Breadcrumb from './common/BreadcrumbCommon.vue'
 import { useIsMobile } from '@/mixins/isMobileMixin'
 
 const pokemonStore = usePokemonStore()
