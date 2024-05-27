@@ -30,6 +30,18 @@ Now, in the root of the assets/scss/ folder a file called main.scss must be crea
 
 > [!CAUTION]
 > Remember to only create the folder if you are going to save files in it.
+## Node Version
+If you use [nvm](https://github.com/nvm-sh/nvm) run the following commands
+
+### Install Node Version
+```sh
+nvm install v18.15.0
+```
+
+### Use Node Version
+```sh
+nvm use v18.15.0
+```
 
 ## Project Setup
 
