@@ -1,10 +1,5 @@
-@import './ButtonCommon';
-@import './BreadcrumbCommon';
-@import './CardCommon';
-@import './CardPokemon';
-@import './CheckboxCommon';
-@import './LoadingCommon';
-@import './PokemonList';
-@import './ListCommon';
-@import './ListItem';
-@import './TeamPokemonList';
+@import "./common/module";
+@import "./CardPokemon";
+@import "./DetailPokemon";
+@import "./PokemonList";
+@import "./TeamPokemonList";
