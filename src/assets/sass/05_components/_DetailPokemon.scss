@@ -22,6 +22,7 @@
     &__image {
       width: 300px;
       aspect-ratio: 1 / 1;
+      cursor: pointer;
       &:active {
         animation: bounce 1s ease-in-out;
       }
@@ -113,6 +114,7 @@
           &__image {
             width: 300px;
             aspect-ratio: 1 / 1;
+            cursor: pointer;
             &:active {
               animation: bounce 1s ease-in-out;
             }
