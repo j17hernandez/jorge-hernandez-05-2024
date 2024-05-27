@@ -35,15 +35,13 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-          # Upload Frontend Artifact
-          mv dist ../frontend-dist
-          echo "frontend-dist" >> dist-ignore-list.txt
+          echo "dist" >> dist-ignore-list.txt
       # Upload Frontend Artifact
-      - name: Upload Frontend Artifact
+      - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.3
         with:
-          name: frontend-dist
-          path: frontend-dist
+          name: dist
+          path: dist
 
   deploy:
     environment:
@@ -57,7 +55,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.7
         with:
-          name: frontend-dist
+          name: dist
 
       - name: Deploy GitHub Pages site
         uses: actions/deploy-pages@v4.0.5
@@ -66,4 +64,4 @@ jobs:
           timeout: 600000
           error_count: 10
           reporting_interval: 5000
-          artifact_name: frontend-dist
+          artifact_name: dist
