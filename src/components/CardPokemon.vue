@@ -5,10 +5,10 @@
       'card-pokemon--selected': pokemon.selected,
       'card-pokemon--limit': teamStore.isLimitReached
     }"
-    :style="`--width: ${width}px; --width-image: ${widthImage}px`"
-    :width="width"
+    :style="`--width-image: ${widthImage}px`"
     v-for="(pokemon, index) in pokemons"
     :key="index"
+    @click="canGoToPokemon ? goToPokemon(pokemon) : () => {}"
   >
     <template #title>
       <div class="card-pokemon__header">
@@ -31,7 +31,7 @@
           :alt="pokemon.name"
         />
 
-        <div v-if="showStats" class="card-pokemon__body__attributes">
+        <div v-if="showAttributes" class="card-pokemon__body__attributes">
           <div class="card-pokemon__body__types">
             <span class="card-pokemon__body__types__title">Types:</span>
             <span>{{ pokemon.types.map((type) => type.type.name).join(', ') }}</span>
@@ -68,8 +68,9 @@ import Card from '@/components/common/CardCommon.vue'
 import Checkbox from '@/components/common/CheckboxCommon.vue'
 import type { DetailPokemon } from '@/interfaces/detail-pokemon.interface'
 import soundIcon from '@/assets/img/icons/sound.png'
-const teamStore = useTeamStore()
+import { useRouter } from 'vue-router'
 
+const teamStore = useTeamStore()
 defineProps({
   pokemons: {
     type: Array<DetailPokemon>
@@ -86,12 +87,17 @@ defineProps({
     type: Number,
     default: 150
   },
-  showStats: {
+  showAttributes: {
+    type: Boolean,
+    default: false
+  },
+  canGoToPokemon: {
     type: Boolean,
     default: false
   }
 })
 
+const router = useRouter()
 const selectPokemon = (pokemon: DetailPokemon) => {
   if (!pokemon.selected && teamStore.isLimitReached) return
 
@@ -106,5 +112,10 @@ const selectPokemon = (pokemon: DetailPokemon) => {
 const playAudio = (pokemon: DetailPokemon) => {
   const audio = new Audio(pokemon.cries.latest)
   audio.play()
+}
+
+const goToPokemon = (pokemon: DetailPokemon) => {
+  teamStore.addBreadcrumb({ name: pokemon.name, link: `/team/${pokemon.id}` })
+  router.push({ name: 'pokemon-detail', params: { id: pokemon.id } })
 }
 </script>

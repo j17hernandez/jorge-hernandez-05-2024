@@ -56,7 +56,8 @@ const props = defineProps({
 const router = useRouter()
 
 const isSelectedItemPath = computed(() => {
-  return router.currentRoute.value.path === props.item.path
+  const pathSplit = router.currentRoute.value.path.split('/')
+  return pathSplit[1] === props.item.path.replace('/', '')
 })
 
 const goToPath = (path: string) => {

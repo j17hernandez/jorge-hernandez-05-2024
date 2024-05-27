@@ -4,9 +4,8 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1em;
     height: auto;
-    overflow: auto;
-    overflow-y: scroll;
-    max-height: 90vh;
+    overflow-y: auto;
+    max-height: 85vh;
     padding: 10px;
   }
   &--is-mobile {
@@ -18,12 +17,16 @@
       }
     }
   }
-
-  &__pagination {
+  &__header {
     display: flex;
-    justify-content: flex-end;
-    gap: 1em;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
+    &__pagination {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1em;
+      align-items: center;
+    }
   }
 }
