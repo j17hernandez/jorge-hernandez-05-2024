@@ -3,22 +3,22 @@
     class="item__container"
     :class="{
       'item__container--selected-path': isSelectedItemPath,
-      'item__container--rounded': rounded
+      'item__container--rounded': rounded,
     }"
-    @click="goToPath(item.path)"
+    @click="handleClick(item)"
   >
     <div
       class="item__container__data"
       :class="{
-        'item__container__data--navigation': item.path
+        'item__container__data--navigation': item.path,
       }"
     >
-      <!--List item icon-->
       <div v-if="item.icon" class="item__container__data__icon-container">
         <img
           class="item__container__data__icon-container__icon"
           :class="{
-            'item__container__data__icon-container__icon-selected': isSelectedItemPath
+            'item__container__data__icon-container__icon-selected':
+              isSelectedItemPath,
           }"
           :src="item.icon"
           :alt="item.name"
@@ -34,33 +34,34 @@
 </template>
 
 <script lang="ts" setup>
-import type { ListItemType } from '@/interfaces/list-item.interface'
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import type { ListItemType } from "@/interfaces/list-item.interface";
+import { computed, defineEmits } from "vue";
+import { useRouter } from "vue-router";
 
+const emit = defineEmits(["click"]);
 const props = defineProps({
   item: {
     type: Object as () => ListItemType,
-    required: true
+    required: true,
   },
   itemText: {
     type: String,
-    default: ''
+    default: "",
   },
   rounded: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 
-const router = useRouter()
+const router = useRouter();
 
 const isSelectedItemPath = computed(() => {
-  const pathSplit = router.currentRoute.value.path.split('/')
-  return pathSplit[1] === props.item.path.replace('/', '')
-})
+  const pathSplit = router.currentRoute.value.path.split("/");
+  return pathSplit[1] === props.item.path.replace("/", "");
+});
 
-const goToPath = (path: string) => {
-  router.push(path)
-}
+const handleClick = (item: ListItemType) => {
+  emit("click", item);
+};
 </script>

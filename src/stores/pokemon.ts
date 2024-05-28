@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import PokeAPI from "@/api/PokeAPI";
 import type { DetailPokemon } from "@/interfaces/detail-pokemon.interface";
 import type { Result } from "@/interfaces/pokemon.interface";
-import type { BreadCrumb } from "@/interfaces/breadcrumb.interface";
 
 export const usePokemonStore = defineStore("pokemon", {
   state: () => ({
@@ -14,7 +13,6 @@ export const usePokemonStore = defineStore("pokemon", {
     currentPage: 1,
     totalPages: 0,
     search: "",
-    breadcrumb: [{ name: "Home", link: "/" }] as BreadCrumb[],
   }),
   actions: {
     async getAllPokemons() {

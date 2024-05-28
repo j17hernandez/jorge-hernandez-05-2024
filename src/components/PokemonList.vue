@@ -2,11 +2,12 @@
   <div class="pokemon-list" :class="{ 'pokemon-list--is-mobile': isMobile }">
     <Loading :isLoading="isLoading" />
     <div class="pokemon-list__header">
-      <Breadcrumb :items="pokemonStore.breadcrumb" />
+      <Breadcrumb :items="breadcrumbStore.breadcrumbs" />
       <Input
         type="search"
+        class="pokemon-list__header__input"
         v-model="pokemonStore.search"
-        :block="isMobile"
+        block
         icon
         @update:modelValue="() => pokemonStore.getPokemonSearch()"
       />
@@ -35,6 +36,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, computed } from "vue";
 import { usePokemonStore } from "@/stores/pokemon";
+import { useBreadcrumb } from "@/stores/breadcrumb";
 import NoDataAvalible from "@/components/NoDataAvalible.vue";
 import Loading from "@/components/common/LoadingCommon.vue";
 import CardPokemon from "@/components/CardPokemon.vue";
@@ -44,6 +46,7 @@ import Input from "@/components/common/InputCommon.vue";
 import { useIsMobile } from "@/mixins/isMobileMixin";
 
 const pokemonStore = usePokemonStore();
+const breadcrumbStore = useBreadcrumb();
 const isLoading = ref(false);
 const { isMobile } = useIsMobile();
 

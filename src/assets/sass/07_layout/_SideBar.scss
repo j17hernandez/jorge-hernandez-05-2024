@@ -14,6 +14,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       height: 70px;
       padding: 10px;
       &__image {
@@ -59,7 +60,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 969px) {
   .sidebar {
     height: 100vh !important;
     &__container {

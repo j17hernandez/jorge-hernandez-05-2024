@@ -6,7 +6,7 @@
     <Loading :isLoading="isLoading" />
     <Breadcrumb
       v-if="teamStore.teamPokemon.length > 0"
-      :items="teamStore.breadcrumb"
+      :items="breadcrumbStore.breadcrumbs"
     />
     <section
       v-if="!isLoading && teamStore.teamPokemon.length > 0"
@@ -28,6 +28,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useTeamStore } from "@/stores/team";
+import { useBreadcrumb } from "@/stores/breadcrumb";
 import Loading from "@/components/common/LoadingCommon.vue";
 import Breadcrumb from "@/components/common/BreadcrumbCommon.vue";
 import NoDataAvalible from "@/components/NoDataAvalible.vue";
@@ -35,6 +36,7 @@ import CardPokemon from "@/components/CardPokemon.vue";
 import { useIsMobile } from "@/mixins/isMobileMixin";
 
 const teamStore = useTeamStore();
+const breadcrumbStore = useBreadcrumb();
 const { isMobile } = useIsMobile();
 const isLoading = ref(false);
 </script>

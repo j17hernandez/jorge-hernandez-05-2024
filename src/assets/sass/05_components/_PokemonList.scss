@@ -16,6 +16,9 @@
         flex-direction: column;
         align-items: start;
         gap: 10px;
+        &__input {
+          width: 100%;
+        }
         &__pagination {
           width: 100%;
           justify-content: space-between;
@@ -23,6 +26,10 @@
       }
       &__container {
         grid-template-columns: repeat(1, minmax(100%, 1fr));
+        height: 100%;
+        overflow-y: auto;
+        max-height: 100%;
+        padding-bottom: 30px;
       }
     }
   }
@@ -31,6 +38,9 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
+    &__input {
+      width: 50%;
+    }
     &__pagination {
       display: flex;
       justify-content: flex-end;

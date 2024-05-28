@@ -14,7 +14,9 @@ export const useDetailPokemonStore = defineStore("detailPokemon", {
       const response = await PokeAPI.getPokemonByName(name);
       return {
         name: name,
-        image: response.data.sprites.front_default,
+        image:
+          response.data.sprites.other?.dream_world.front_default ??
+          response.data.sprites.front_default,
         audio: response.data.cries.latest,
       };
     },

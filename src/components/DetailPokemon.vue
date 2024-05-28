@@ -4,7 +4,7 @@
     :class="{ 'detail-pokemon--is-mobile': isMobile }"
   >
     <Loading :isLoading="isLoading" />
-    <Breadcrumb :items="teamStore.breadcrumb" />
+    <Breadcrumb :items="breadcrumbStore.breadcrumbs" />
     <section
       v-if="Object.keys(pokemonSelected).length > 0"
       class="detail-pokemon__container"
@@ -23,7 +23,10 @@
           </span>
           <img
             class="detail-pokemon__presentation__image"
-            :src="pokemonSelected.sprites.front_default"
+            :src="
+              pokemonSelected.sprites.other?.dream_world.front_default ||
+              pokemonSelected.sprites.front_default
+            "
             :alt="pokemonSelected.name"
           />
         </div>
@@ -88,6 +91,7 @@
 import { ref, onMounted } from "vue";
 import { useTeamStore } from "@/stores/team";
 import { useDetailPokemonStore } from "@/stores/detailPokemon";
+import { useBreadcrumb } from "@/stores/breadcrumb";
 import { useRouter } from "vue-router";
 import { useIsMobile } from "@/mixins/isMobileMixin";
 import type { DetailPokemon } from "@/interfaces/detail-pokemon.interface";
@@ -99,6 +103,7 @@ import type { Evolution } from "@/interfaces/evolution-pokemon.interface";
 
 const teamStore = useTeamStore();
 const detailPokemonStore = useDetailPokemonStore();
+const breadcrumbStore = useBreadcrumb();
 const isLoading = ref(false);
 const { isMobile } = useIsMobile();
 const router = useRouter();

@@ -23,8 +23,8 @@
       width: var(--width-image);
       height: var(--width-image);
       aspect-ratio: 1 / 19;
-      &:active {
-        animation: bounce 1s ease-in-out;
+      &:hover {
+        animation: bounce 1s infinite;
       }
     }
     &__types {
@@ -65,11 +65,13 @@
   }
 
   &--limit {
-    .card-pokemon {
-      &__body {
-        &__image {
-          &:active {
-            animation: vibrate 0.4s infinite;
+    &:not(.card-pokemon--selected) {
+      .card-pokemon {
+        &__body {
+          &__image {
+            &:hover {
+              animation: vibrate 0.5s infinite;
+            }
           }
         }
       }

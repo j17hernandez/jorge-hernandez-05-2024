@@ -32,7 +32,7 @@
   @include scroll-bar;
 }
 
-@media (min-width: 200px) and (max-width: 576px) {
+@media (min-width: 200px) and (max-width: 969px) {
   .layout-main {
     &__container {
       width: 100% !important;

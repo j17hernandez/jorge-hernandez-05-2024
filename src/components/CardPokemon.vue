@@ -28,7 +28,10 @@
       <div class="card-pokemon__body" @click="goToPokemon(pokemon)">
         <img
           class="card-pokemon__body__image"
-          :src="pokemon.sprites.front_default"
+          :src="
+            pokemon.sprites.other?.dream_world.front_default ||
+            pokemon.sprites.front_default
+          "
           :alt="pokemon.name"
         />
 
@@ -69,6 +72,7 @@
 <script lang="ts" setup>
 import { defineProps } from "vue";
 import { useTeamStore } from "@/stores/team";
+import { useBreadcrumb } from "@/stores/breadcrumb";
 import Card from "@/components/common/CardCommon.vue";
 import Checkbox from "@/components/common/CheckboxCommon.vue";
 import type { DetailPokemon } from "@/interfaces/detail-pokemon.interface";
@@ -76,6 +80,7 @@ import soundIcon from "@/assets/img/icons/sound.png";
 import { useRouter } from "vue-router";
 
 const teamStore = useTeamStore();
+const breadcrumbStore = useBreadcrumb();
 const props = defineProps({
   pokemons: {
     type: Array<DetailPokemon>,
@@ -121,7 +126,10 @@ const playAudio = (pokemon: DetailPokemon) => {
 
 const goToPokemon = (pokemon: DetailPokemon) => {
   if (!props.canGoToPokemon) return;
-  teamStore.addBreadcrumb({ name: pokemon.name, link: `/team/${pokemon.id}` });
+  breadcrumbStore.addBreadcrumb({
+    name: pokemon.name,
+    link: `/team/${pokemon.id}`,
+  });
   router.push({ name: "pokemon-detail", params: { id: pokemon.id } });
 };
 </script>

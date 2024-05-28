@@ -23,8 +23,8 @@
       width: 300px;
       aspect-ratio: 1 / 1;
       cursor: pointer;
-      &:active {
-        animation: bounce 1s ease-in-out;
+      &:hover {
+        animation: bounce 1s infinite;
       }
     }
   }
@@ -115,8 +115,8 @@
             width: 300px;
             aspect-ratio: 1 / 1;
             cursor: pointer;
-            &:active {
-              animation: bounce 1s ease-in-out;
+            &:hover {
+              animation: bounce 1s infinite;
             }
           }
         }
