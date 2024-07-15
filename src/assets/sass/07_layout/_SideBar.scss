@@ -43,21 +43,6 @@
       width: 80px;
     }
   }
-  &--hidden {
-    all: unset;
-    padding-right: 8px;
-    background-color: $color-background;
-    transform: translateX(-100%);
-    transition: 1s ease-out;
-  }
-
-  &--show {
-    all: unset;
-    padding-right: 8px;
-    background-color: $color-background;
-    transform: translateX(0);
-    transition: 1s ease-out;
-  }
 }
 
 @media (max-width: 969px) {

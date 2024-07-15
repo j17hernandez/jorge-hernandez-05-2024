@@ -23,10 +23,7 @@
           </span>
           <img
             class="detail-pokemon__presentation__image"
-            :src="
-              pokemonSelected.sprites.other?.dream_world.front_default ||
-              pokemonSelected.sprites.front_default
-            "
+            :src="pokemonSelected.sprites.other?.dream_world.front_default"
             :alt="pokemonSelected.name"
           />
         </div>

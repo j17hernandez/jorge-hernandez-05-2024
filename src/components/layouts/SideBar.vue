@@ -1,11 +1,5 @@
 <template>
-  <aside
-    class="sidebar"
-    :class="{
-      'sidebar--hidden': !layoutStore.showSidebar,
-      'sidebar--show': layoutStore.showSidebar,
-    }"
-  >
+  <aside class="sidebar">
     <div
       class="sidebar__container"
       :class="{
@@ -43,7 +37,6 @@
 </template>
 <script lang="ts" setup>
 import { ref, defineEmits, onMounted } from "vue";
-import { useLayoutStore } from "@/stores/layout";
 import { useBreadcrumb } from "@/stores/breadcrumb";
 import { useRouter } from "vue-router";
 import List from "@/components/common/ListCommon.vue";
@@ -58,7 +51,6 @@ import { useIsMobile } from "@/mixins/isMobileMixin";
 
 const { isMobile } = useIsMobile();
 const router = useRouter();
-const layoutStore = useLayoutStore();
 const breadcrumbStore = useBreadcrumb();
 const emit = defineEmits(["isExpanded"]);
 const contentExpanded = ref(true);
